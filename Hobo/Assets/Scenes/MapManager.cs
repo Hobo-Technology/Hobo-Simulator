@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-class Item 
+class Item
 {
     
 }
 
 class MoveObject: Item 
 {
-    
+
 }
 
 class Building : Item
@@ -32,8 +32,8 @@ class Cell
 public class MapManager : MonoBehaviour {
     enum MAP_TYPE
     {
-        
-        TYPE_NUM=10
+        TYPE_ASAFAS,
+        TYPE_NUM=1
     }
 
     const int SIZE = 100;

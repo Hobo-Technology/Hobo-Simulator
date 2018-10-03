@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MapRenderer : MonoBehaviour {
-    
+
+    static float topPadding, leftPadding;
+    static float cellWidth = 0.8f, cellHeight = 0.8f;
+
     public GameObject cellPrefab;
 	// Use this for initialization
 	void Start () {
@@ -13,16 +16,24 @@ public class MapRenderer : MonoBehaviour {
             {
                 Transform trans = transform;
                 Vector3 pos = trans.position;
-                pos.x = j * 0.8f;
-                pos.y = i * 0.8f;
+                pos.x = j * cellWidth;
+                pos.y = i * cellHeight;
                 trans.position = pos;
-                Instantiate(cellPrefab, pos, Quaternion.identity);
+                GameObject temp = Instantiate(cellPrefab, trans, true);
             }
         }
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+	    	
 	}
+
+    static Vector2Int WorldToCellPosition(Vector2 orig) 
+    {
+        Vector2Int pos = new Vector2Int();
+        pos.x = orig.x / 
+        return pos;
+
+    }
 }
