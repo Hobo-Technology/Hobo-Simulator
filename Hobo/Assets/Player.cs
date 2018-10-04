@@ -2,27 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// cao zuo
-public class Player : MonoBehaviour {
-
-    Vector2Int viewPosition;
-
-
-	// Use this for initialization
-	void Start () {
+public class Player : MonoBehaviour
+{
+  	// Use this for initialization
+	void Start ()
+    {
     	
 	}
 	
 	// Update is called once per frame
-	void Update () {
-        if(Input.GetMouseButton(0)) {
-            Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            pos.z = transform.position.z;
-            transform.position = pos;
+	void Update ()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-            // Cell 坐标 
-        }	
-
-        ///
+            if (MapManager.LegalWorldPos(mousePos))
+            {
+                Debug.Log("Position = " + MapManager.WorldPosToMap(mousePos).ToString());
+                Vector2 mapPos = MapManager.WorldPosToMap(mousePos);
+                this.transform.localPosition = MapManager.MapPosToWorld(mapPos);
+            }
+            else
+            {
+                Debug.Log("Illegal!");
+            }
+        }
 	}
 }
