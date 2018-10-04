@@ -44,6 +44,8 @@ public class MapManager : MonoBehaviour {
         {
             for (int j = 0; j < SIZE; ++j)
             {
+
+
                  map[i, j] = Cell.GenerateCell();
             }
         }
