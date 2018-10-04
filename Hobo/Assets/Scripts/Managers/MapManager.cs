@@ -1,18 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-class Cell
-{
-    List<Item> arrayHuman = new List<Item>();
-    List<Item> arrayBuilding = new List<Item>();
-
-    public static Cell GenerateCell()
-    {
-        Cell cell = new Cell();
-        return cell;
-    }
-}
 
 public class MapManager : MonoBehaviour
 {
@@ -40,7 +29,7 @@ public class MapManager : MonoBehaviour
         {
             for (int x = 0; x < CELL_NUM; ++x)
             {
-                 map[y, x] = Cell.GenerateCell();
+                map[y, x] = CellFactory.Inst.GenerateCell();
             }
         }
 
@@ -49,8 +38,8 @@ public class MapManager : MonoBehaviour
         {
             for (int x = 0; x < CELL_NUM; ++x)
             {
-                GameObject tmp = Instantiate(cellPrefab, this.transform, true);
-                tmp.transform.localPosition = MapPosToWorld(new Vector2(x, y)); //localPosition vs Position
+                GameObject temp = Instantiate(cellPrefab, this.transform, true);
+                temp.transform.localPosition = MapPosToWorld(new Vector2(x, y)); //localPosition vs Position
             }
         }
     }
@@ -73,8 +62,9 @@ public class MapManager : MonoBehaviour
     public static Vector2 WorldPosToMap(Vector2 worldPos)
     {
         Vector2 ajustPos = worldPos + new Vector2(CELL_LENGTH * 0.5f, CELL_LENGTH * 0.5f) - (Vector2)MapManager.Instance.transform.position;
-        int y = (int)(ajustPos.y / CELL_LENGTH);
-        int x = (int)(ajustPos.x / CELL_LENGTH);
+        
+        int y = (int)Math.Floor(ajustPos.y / CELL_LENGTH);
+        int x = (int)Math.Floor(ajustPos.x / CELL_LENGTH);
         return new Vector2(x, y);
     }
 }

@@ -6,13 +6,3 @@ class Item
 {
 
 }
-
-class MoveObject : Item
-{
-
-}
-
-class Building : Item
-{
-
-}
