@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4199681669731538}
   - component: {fileID: 212595482516052322}
   m_Layer: 0
-  m_Name: Cell
+  m_Name: CellPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
