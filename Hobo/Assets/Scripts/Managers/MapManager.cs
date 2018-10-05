@@ -29,17 +29,7 @@ public class MapManager : MonoBehaviour
         {
             for (int x = 0; x < CELL_NUM; ++x)
             {
-                map[y, x] = CellFactory.Inst.GenerateCell();
-            }
-        }
-
-        // Display map
-        for (int y = 0; y < CELL_NUM; ++y)
-        {
-            for (int x = 0; x < CELL_NUM; ++x)
-            {
-                GameObject temp = Instantiate(cellPrefab, this.transform, true);
-                temp.transform.localPosition = MapPosToWorld(new Vector2(x, y)); //localPosition vs Position
+                map[y, x] = CellFactory.Inst.GenerateCell(MapPosToWorld(new Vector2(x, y)));
             }
         }
     }

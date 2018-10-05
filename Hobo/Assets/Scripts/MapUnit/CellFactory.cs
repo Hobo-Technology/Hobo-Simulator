@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CellFactory : Singleton<CellFactory>
 {
-    public Cell GenerateCell()
+    public Cell GenerateCell(Vector2 position, BuildingType generateBuildingType = BuildingType.RANDOM)
     {
-        Cell cell = new Cell();
+        Cell cell = new Cell(position, generateBuildingType);
         return cell;
     }
 }
