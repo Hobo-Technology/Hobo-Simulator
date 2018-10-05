@@ -32,8 +32,6 @@ public class Cell
     };
     GameObject cellPrefab = GameObject.Find("CellPrefab");
     BuildingType buildingType;
-    List<Item> arrayHuman = new List<Item>();
-    List<Item> arrayBuilding = new List<Item>();
 
     public Cell(Vector2 position, BuildingType generateBuildingType = BuildingType.RANDOM)
     {
