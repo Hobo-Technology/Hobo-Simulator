@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = ("RPG/Weapon"))]
+[CreateAssetMenu(menuName = ("HOBO/Weapon"))]
 public class Weapon : ScriptableObject
 {
     [SerializeField] Color color;

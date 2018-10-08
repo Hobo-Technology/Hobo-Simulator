@@ -7,13 +7,12 @@ public class CombatCharacterControl : MonoBehaviour {
     public float moveMaxSpeed;
     public float moveForce;
 
-    private Rigidbody2D rigidbody;
-
+    private Rigidbody2D theRigidbody;
 
 	// Use this for initialization
 	void Start () 
     {
-        rigidbody = GetComponent<Rigidbody2D>();
+        theRigidbody = GetComponent<Rigidbody2D>();
 	}
 	
 	// Update is called once per frame
@@ -21,10 +20,10 @@ public class CombatCharacterControl : MonoBehaviour {
     {
         // move
         Vector2 force = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * moveForce;
-        rigidbody.AddForce(force);
-        if(rigidbody.velocity.magnitude > moveMaxSpeed)
+        theRigidbody.AddForce(force);
+        if(theRigidbody.velocity.magnitude > moveMaxSpeed)
         {
-            rigidbody.velocity = rigidbody.velocity.normalized * moveMaxSpeed; 
+            theRigidbody.velocity = theRigidbody.velocity.normalized * moveMaxSpeed; 
         }
 
         // rotation
@@ -33,13 +32,7 @@ public class CombatCharacterControl : MonoBehaviour {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector3 thisPos = this.transform.position;
             float targetAngle = Mathf.Atan2(mousePos.y - thisPos.y, mousePos.x - thisPos.x);
-            float origAngle = this.transform.eulerAngles.y;
             this.transform.Rotate(0, 0, Mathf.Rad2Deg * targetAngle - this.transform.eulerAngles.z);
-
-            //Vector3 relativePos = mousePos - transform.position;
-            //Quaternion rotation = Quaternion.LookRotation(relativePos);
-            //transform.rotation = rotation;
-
         }
 	}
 }
